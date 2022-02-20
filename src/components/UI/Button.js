@@ -1,18 +1,17 @@
 import React from "react";
-import { Button } from "@mui/material";
+import { Button as MuiButton } from "@mui/material";
 
-const StandardButton = (props) => {
+const Button = ({ variant, onClick, fullWidth, type, children }) => {
   return (
-    <Button
-      variant={props.variant}
-      size={props.variant}
-      onClick={props.onClick}
-      fullWidth={props.fullWidth}
-      type={props.type}
+    <MuiButton
+      variant={variant}
+      onClick={onClick}
+      fullWidth={fullWidth}
+      type={type}
     >
-      {props.children}
-    </Button>
+      {children}
+    </MuiButton>
   );
 };
 
-export default StandardButton;
+export default Button;

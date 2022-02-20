@@ -1,6 +1,6 @@
-import { TextField } from "@mui/material";
+import { TextField as MuiTextField } from "@mui/material";
 
-const TextInput = ({
+const TextField = ({
   variant,
   id,
   label,
@@ -15,7 +15,7 @@ const TextInput = ({
 
   return (
     <>
-      <TextField
+      <MuiTextField
         variant={variant}
         label={label}
         id={id}
@@ -28,4 +28,4 @@ const TextInput = ({
   );
 };
 
-export default TextInput;
+export default TextField;

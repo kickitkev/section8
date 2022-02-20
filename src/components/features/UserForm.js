@@ -1,17 +1,18 @@
 import React from "react";
-import TextInput from "../UI/TextField";
-import StandardButton from "../UI/Button";
+import TextField from "../UI/TextField";
+import Button from "../UI/Button";
+import { Grid } from "@mui/material";
 
 const UserForm = (props) => {
   const [name, setName] = React.useState("");
   const [age, setAge] = React.useState("");
 
-  const onNameHandler = (enteredText) => {
-    setName(enteredText);
+  const onNameHandler = (enteredName) => {
+    setName(enteredName);
   };
 
-  const onAddAgeHandler = (enteredNumber) => {
-    setAge(enteredNumber);
+  const onAddAgeHandler = (enteredAge) => {
+    setAge(enteredAge);
   };
 
   const onFormSubmitHandler = (event) => {
@@ -20,35 +21,41 @@ const UserForm = (props) => {
   };
 
   return (
-    <>
-      <form onSubmit={onFormSubmitHandler}>
-        <TextInput
-          fullWidth
-          id="Name"
-          label="Name"
-          variant="filled"
-          onAddValue={onNameHandler}
-          value={name}
-        />
-        <TextInput
-          fullWidth={true}
-          id="Age"
-          label="Age"
-          variant="filled"
-          type="number"
-          onAddValue={onAddAgeHandler}
-          value={age}
-        />
-        <StandardButton
-          variant="outlined"
-          size="large"
-          fullWidth={true}
-          type="submit"
-        >
-          Add User
-        </StandardButton>
-      </form>
-    </>
+    <form onSubmit={onFormSubmitHandler}>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            id="Name"
+            label="Name"
+            variant="filled"
+            onAddValue={onNameHandler}
+            value={name}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth={true}
+            id="Age"
+            label="Age"
+            variant="filled"
+            type="number"
+            onAddValue={onAddAgeHandler}
+            value={age}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            variant="outlined"
+            size="large"
+            fullWidth={true}
+            type="submit"
+          >
+            Add User
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
   );
 };
 
