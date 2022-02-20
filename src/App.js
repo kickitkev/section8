@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Card from "./components/UI/Card";
 import UserForm from "./components/features/UserForm";
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Divider, Grid, Typography } from "@mui/material";
 import "./App.css";
 
 function App() {
@@ -23,21 +23,17 @@ function App() {
   };
 
   return (
-    <Container
-      maxWidth="xs"
-      display="flex"
-      justifyContent="space-around"
-      alignItems="center"
-    >
+    <Container maxWidth="xs" style={{ marginTop: "50px" }}>
       <Grid container spacing={4}>
         <Grid item md={12}>
           <Card>
-            <Grid container spacing={2}>
+            <Grid container spacing={4}>
               <Grid item md={12}>
                 <Grid item md={12}>
-                  <Typography marginBottom={4} variant="h5">
+                  <Typography margin={2} variant="h5">
                     Enter Your Details
                   </Typography>
+                  <Divider />
                 </Grid>
                 <Grid item={12}>
                   <UserForm onAddUser={addUserHandler} />
