@@ -2,6 +2,7 @@ import React from "react";
 import TextField from "../UI/TextField";
 import Button from "../UI/Button";
 import { Grid } from "@mui/material";
+import ResponsiveDateTimePickers from "../UI/ResponsiveDateTimePickers";
 
 const UserForm = (props) => {
   const [name, setName] = React.useState("");
@@ -24,6 +25,7 @@ const UserForm = (props) => {
     <form onSubmit={onFormSubmitHandler}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
+          <ResponsiveDateTimePickers />
           <TextField
             fullWidth
             id="Name"

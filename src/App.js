@@ -5,7 +5,7 @@ import { Container, Divider, Grid, Typography } from "@mui/material";
 import "./App.css";
 
 function App() {
-  const [userDetails, setUserDetails] = React.useState([{}]);
+  const [userDetails, setUserDetails] = React.useState([]);
 
   const addUserHandler = (enteredName, enteredAge) => {
     if (enteredName | (enteredAge === "")) {
@@ -21,6 +21,8 @@ function App() {
       },
     ]);
   };
+
+  console.log(userDetails);
 
   return (
     <Container maxWidth="xs" style={{ marginTop: "50px" }}>
@@ -42,14 +44,15 @@ function App() {
             </Grid>
           </Card>
         </Grid>
-        <Grid item md={12}>
-          {userDetails.map((user) => (
-            <>
-              <p>{user.name}</p>
-              <p>{user.age}</p>
-            </>
-          ))}
-        </Grid>
+        {userDetails.map((user) => (
+          <Grid item md={12}>
+            <Card style={{ marginBottom: "20px" }} key={user.id}>
+              <p>
+                <b>Name:</b> {user.name} <b>Age:</b> {user.age}
+              </p>
+            </Card>
+          </Grid>
+        ))}
       </Grid>
     </Container>
   );
