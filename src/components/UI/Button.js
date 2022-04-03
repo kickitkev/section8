@@ -1,7 +1,7 @@
 import React from "react";
 import { Button as MuiButton } from "@mui/material";
 
-const Button = ({ variant, onClick, fullWidth, type, children }) => {
+const Button = ({ variant, onClick, fullWidth, type, label }) => {
   return (
     <MuiButton
       variant={variant}
@@ -9,7 +9,7 @@ const Button = ({ variant, onClick, fullWidth, type, children }) => {
       fullWidth={fullWidth}
       type={type}
     >
-      {children}
+      {label}
     </MuiButton>
   );
 };

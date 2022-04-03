@@ -1,17 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Card from "./components/UI/Card";
 import UserForm from "./components/features/UserForm";
 import { Container, Divider, Grid, Typography } from "@mui/material";
 import "./App.css";
 
 function App() {
-  const [userDetails, setUserDetails] = React.useState([]);
+  const [userDetails, setUserDetails] = useState([]);
 
   const addUserHandler = (enteredName, enteredAge) => {
-    if (enteredName | (enteredAge === "")) {
-      alert("Please enter some detail, YEW!");
-    }
-
     setUserDetails([
       ...userDetails,
       {
@@ -21,8 +17,6 @@ function App() {
       },
     ]);
   };
-
-  console.log(userDetails);
 
   return (
     <Container maxWidth="xs" style={{ marginTop: "50px" }}>

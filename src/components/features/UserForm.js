@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "../UI/TextField";
 import Button from "../UI/Button";
 import { Grid } from "@mui/material";
-import ResponsiveDateTimePickers from "../UI/ResponsiveDateTimePickers";
+import Modal from "../features/Modal";
 
-const UserForm = (props) => {
+const UserForm = ({ onAddUser }) => {
   const [name, setName] = React.useState("");
   const [age, setAge] = React.useState("");
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const onNameHandler = (enteredName) => {
     setName(enteredName);
@@ -16,16 +21,31 @@ const UserForm = (props) => {
     setAge(enteredAge);
   };
 
-  const onFormSubmitHandler = (event) => {
+  const isError = () => {
+    let errorMessage;
+    if (name | (age === "")) {
+      errorMessage = "You cannot leave either field blank";
+    } else if (age < 0) {
+      errorMessage = "Age must be greater than 0";
+    }
+    return errorMessage;
+  };
+
+  const onFormSubmitHandler = (event, errorMessage) => {
     event.preventDefault();
-    props.onAddUser(name, age);
+    isError();
+    if (!errorMessage) {
+      setOpen(true);
+    } else {
+      onAddUser(name, age);
+    }
   };
 
   return (
     <form onSubmit={onFormSubmitHandler}>
+      <Modal error={isError()} open={open} onClose={handleClose} />
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <ResponsiveDateTimePickers />
           <TextField
             fullWidth
             id="Name"
@@ -52,9 +72,8 @@ const UserForm = (props) => {
             size="large"
             fullWidth={true}
             type="submit"
-          >
-            Add User
-          </Button>
+            label="Add User"
+          />
         </Grid>
       </Grid>
     </form>
