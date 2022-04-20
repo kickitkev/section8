@@ -23,7 +23,7 @@ const UserForm = ({ onAddUser }) => {
 
   const isError = () => {
     let errorMessage;
-    console.log("error", errorMessage);
+
     if (!name || !age) {
       errorMessage = "You cannot leave either field blank";
     } else if (age < 0) {
@@ -72,11 +72,22 @@ const UserForm = ({ onAddUser }) => {
         </Grid>
         <Grid item xs={12}>
           <Button
-            variant="outlined"
+            variant="contained"
             size="large"
             fullWidth={true}
             type="submit"
             label="Add User"
+          />
+          <Button
+            variant="outlined"
+            size="large"
+            fullWidth={true}
+            label="Clear"
+            onClick={() => {
+              setName("");
+              setAge("");
+            }}
+            style={{ marginTop: 20 }}
           />
         </Grid>
       </Grid>
