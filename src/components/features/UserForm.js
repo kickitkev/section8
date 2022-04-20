@@ -23,7 +23,8 @@ const UserForm = ({ onAddUser }) => {
 
   const isError = () => {
     let errorMessage;
-    if (name | (age === "")) {
+    console.log("error", errorMessage);
+    if (!name || !age) {
       errorMessage = "You cannot leave either field blank";
     } else if (age < 0) {
       errorMessage = "Age must be greater than 0";
@@ -31,15 +32,18 @@ const UserForm = ({ onAddUser }) => {
     return errorMessage;
   };
 
-  const onFormSubmitHandler = (event, errorMessage) => {
+  const onFormSubmitHandler = (event) => {
     event.preventDefault();
-    isError();
-    if (!errorMessage) {
+    if (isError()) {
       setOpen(true);
     } else {
       onAddUser(name, age);
     }
   };
+
+  useEffect(() => {
+    isError();
+  }, []);
 
   return (
     <form onSubmit={onFormSubmitHandler}>
