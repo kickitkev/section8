@@ -38,6 +38,8 @@ const UserForm = ({ onAddUser }) => {
       setOpen(true);
     } else {
       onAddUser(name, age);
+      setName("");
+      setAge("");
     }
   };
 
@@ -70,7 +72,7 @@ const UserForm = ({ onAddUser }) => {
             value={age}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} gap={4}>
           <Button
             variant="contained"
             size="large"
@@ -87,7 +89,7 @@ const UserForm = ({ onAddUser }) => {
               setName("");
               setAge("");
             }}
-            style={{ marginTop: 20 }}
+            style={{ marginTop: 10 }}
           />
         </Grid>
       </Grid>
