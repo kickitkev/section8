@@ -37,8 +37,6 @@ const UserForm = ({ onAddUser }) => {
     }
   };
 
-  console.log(error);
-
   useEffect(() => {}, [error]);
 
   return (
