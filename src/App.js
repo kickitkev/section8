@@ -39,7 +39,7 @@ function App() {
           </Card>
         </Grid>
         {userDetails.map((user) => (
-          <Grid item md={12}>
+          <Grid item sm={12}>
             <Card style={{ marginBottom: "20px" }} key={user.id}>
               <p>
                 <b>Name:</b> {user.name} <b>Age:</b> {user.age}
