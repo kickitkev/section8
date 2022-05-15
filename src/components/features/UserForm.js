@@ -8,6 +8,7 @@ const UserForm = ({ onAddUser }) => {
   const [name, setName] = React.useState("");
   const [age, setAge] = React.useState("");
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
 
   const handleClose = () => {
     setOpen(false);
@@ -21,20 +22,13 @@ const UserForm = ({ onAddUser }) => {
     setAge(enteredAge);
   };
 
-  const isError = () => {
-    let errorMessage;
-
-    if (!name || !age) {
-      errorMessage = "You cannot leave either field blank";
-    } else if (age < 0) {
-      errorMessage = "Age must be greater than 0";
-    }
-    return errorMessage;
-  };
-
   const onFormSubmitHandler = (event) => {
     event.preventDefault();
-    if (isError()) {
+    if (!name || !age) {
+      setError("You cannot leave either field blank");
+      setOpen(true);
+    } else if (age < 0) {
+      setError("Age must be greater than 0");
       setOpen(true);
     } else {
       onAddUser(name, age);
@@ -43,13 +37,13 @@ const UserForm = ({ onAddUser }) => {
     }
   };
 
-  useEffect(() => {
-    isError();
-  }, []);
+  console.log(error);
+
+  useEffect(() => {}, [error]);
 
   return (
     <form onSubmit={onFormSubmitHandler}>
-      <Modal error={isError()} open={open} onClose={handleClose} />
+      <Modal error={error} open={open} onClose={handleClose} />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <TextField
